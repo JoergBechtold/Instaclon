@@ -1,0 +1,15 @@
+body {
+  font-family: 'roboto';
+  margin: 0;
+  min-height: 100vh;
+}
+
+.margin-left-right {
+  margin: 0 15% 0 15%;
+}
+
+:root {
+  --gray: rgb(128, 128, 128, 0.2);
+  --light-gray: rgb(244, 244, 244);
+  --border: 2px solid rgb(128, 128, 128, 0.2);
+}
