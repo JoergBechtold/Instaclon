@@ -20,9 +20,9 @@ body {
   align-items: center;
 } */
 
-.gab {
+/* .gab {
   gap: 25px;
-}
+} */
 
 .margin-left {
   margin-left: 35px;
@@ -45,9 +45,31 @@ body {
   font-size: 18px;
 }
 
+.p-black {
+  color: black;
+  font-weight: bold;
+}
+
+.p-gray {
+  color: var(--text-gray);
+}
+
+.p-black,
+.p-gray {
+  font-size: 22px;
+  margin: 4px 0 4px 0;
+}
+
 .profil-picture-large {
   border-radius: 50%;
   object-fit: cover;
   height: 100px;
   width: 100px;
+}
+
+.profil-picture-smale {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 60px;
+  width: 60px;
 }

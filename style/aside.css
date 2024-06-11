@@ -17,18 +17,46 @@
 
 .profile-section {
   margin-top: 100px;
+  margin-bottom: 40px;
   gap: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.img-name {
+.my-img-my-name {
+  gap: 25px;
   display: flex;
   align-items: center;
 }
 
-.img-name p {
-  font-size: 22px;
-  margin: 4px 0 4px 0;
+.suggestion-headline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.suggestion-headline h1 {
+  color: var(--text-gray);
+  font-weight: bold;
+}
+
+.suggestion-headline a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+
+.profiles-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.random-profiles {
+  gap: 25px;
+  display: flex;
+  align-items: center;
 }
