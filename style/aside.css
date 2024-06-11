@@ -1,0 +1,14 @@
+/* Aside Css */
+
+.aside-content {
+  width: 45%;
+  /* position: fixed; */
+  right: 0;
+  top: 102px;
+  bottom: 0;
+  background-color: blue;
+}
+
+/* .content-aside {
+  margin-right: 30%;
+} */

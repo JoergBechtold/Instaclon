@@ -1,3 +1,4 @@
+/* Index CSS */
 body {
   font-family: 'roboto';
   margin: 0;
@@ -7,6 +8,31 @@ body {
 .margin-left-right {
   margin: 0 15% 0 15%;
 }
+
+.content {
+  background-color: cadetblue;
+  width: 100%;
+}
+
+/* .layout {
+  display: grid;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+    'h h'
+    'm a';
+}
+
+header {
+  grid-area: h;
+}
+
+main {
+  grid-area: m;
+}
+
+aside {
+  grid-area: a;
+} */
 
 :root {
   --gray: rgb(128, 128, 128, 0.2);

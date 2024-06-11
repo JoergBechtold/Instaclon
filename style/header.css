@@ -1,9 +1,13 @@
 /* header */
 header {
+  background-color: white;
   border-bottom: var(--border);
   width: 100%;
   height: 100px;
-  position: static;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 .header-logo {
@@ -15,6 +19,7 @@ header {
 .header-logo img {
   width: 180px;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 .header-logo a {
@@ -115,6 +120,7 @@ label {
 }
 
 .navigation img {
+  transition: 0.2s ease-in-out;
   width: 45px;
   cursor: pointer;
 }
@@ -122,6 +128,7 @@ label {
 .navigation img:hover,
 .header-logo img:hover {
   scale: 1.2;
+
   transform: translateY(-6px);
   filter: drop-shadow(6px 5px 1px rgb(128, 128, 128, 1.2));
 }
