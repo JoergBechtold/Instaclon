@@ -42,7 +42,7 @@ header {
   align-items: center;
   padding: 14px;
   border-radius: 28px;
-  background-color: #f6f6f6;
+  background-color: var(--bg-gray);
   width: 250px;
 }
 
@@ -66,7 +66,7 @@ header {
 .search-input::placeholder {
   text-align: center;
   user-select: none;
-  color: rgb(150, 146, 146, 2);
+  color: var(--text-gray);
 }
 
 .search-input:focus::placeholder {
