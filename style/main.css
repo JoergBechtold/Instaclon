@@ -1,6 +1,75 @@
 /* Main CSS */
 .main {
-  margin-top: 102px;
+  padding-top: 102px;
   width: 40%;
   margin-left: 15%;
+}
+
+.post-container {
+  margin: 25px 0 25px 0;
+  border: var(--border);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.post-headline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.post-headline-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.author-img {
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 75px;
+  width: 75px;
+}
+
+.tree-dots-icon {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.post-img img {
+  width: fit-content;
+  object-fit: cover;
+}
+
+.post-icons {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icons-left img {
+  cursor: pointer;
+  object-fit: cover;
+  height: 45px;
+  width: 45px;
+}
+
+.icons-right img {
+  cursor: pointer;
+  object-fit: cover;
+  height: 55px;
+  width: 42px;
 }
