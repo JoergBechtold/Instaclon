@@ -85,33 +85,6 @@ header {
   background: black;
 }
 
-/* 
- */
-
-/* form {
-  width: 100%;
-  min-width: 150px;
-  max-width: 250px;
-} */
-
-/* input {
-  background-color: var(--light-gray);
-  border: var(--border);
-  border-radius: 3px;
-  font-size: 23px;
-  padding: 10px;
-} */
-/* 
-label {
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  padding: 10px;
-  cursor: text;
-  color: var(--gray);
-} */
-
 .navigation {
   display: flex;
   align-items: center;

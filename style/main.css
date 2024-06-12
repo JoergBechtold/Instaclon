@@ -5,18 +5,27 @@
   margin-left: 15%;
 }
 
+.padding {
+  padding: 20px;
+}
+
+.padding-left-right {
+  padding: 0 20px 0 20px;
+}
+
 .post-container {
   margin: 25px 0 25px 0;
   border: var(--border);
   border-radius: 5px;
+  background-color: white;
   width: 100%;
 }
 
 .post-headline {
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
 }
 
 .post-headline-content {
@@ -44,10 +53,10 @@
 .post-img img {
   width: fit-content;
   object-fit: cover;
+  width: 100%;
 }
 
 .post-icons {
-  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,4 +81,91 @@
   object-fit: cover;
   height: 55px;
   width: 42px;
+}
+
+.liks-section {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.liks-section p {
+  font-weight: 600;
+}
+
+.post-text span {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.show-all-comments {
+  margin-top: 8px;
+}
+
+.show-all-comments a {
+  text-decoration: none;
+  color: var(--text-gray);
+}
+
+.current-comments {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-profile-name-text {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.comment-profile-name-text p {
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.comment-heart-icon img {
+  cursor: pointer;
+  object-fit: cover;
+  height: 25px;
+  width: 25px;
+}
+
+.last-comment-time p {
+  color: var(--text-gray);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.add-new-comment {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  border-top: var(--border);
+}
+
+.add-new-comment-input {
+  width: 100%;
+  font-size: 18px;
+  border: none;
+  padding: 24px 0 24px 0;
+}
+
+.add-new-comment-input::placeholder {
+  color: var(--text-gray);
+}
+
+.add-new-comment-button {
+  font-size: 18px;
+  color: var(--blue);
+  font-weight: bold;
+  border: none;
+  padding: 24px 0 24px 0;
+  background-color: white;
+  cursor: pointer;
+  height: 100%;
+  width: 15%;
 }
