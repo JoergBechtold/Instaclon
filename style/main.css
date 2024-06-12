@@ -34,6 +34,13 @@
   gap: 20px;
 }
 
+.post-headline-content a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .author-img {
   cursor: pointer;
   border-radius: 50%;
