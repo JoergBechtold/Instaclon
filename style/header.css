@@ -101,7 +101,6 @@ header {
 .navigation img:hover,
 .header-logo img:hover {
   scale: 1.2;
-
   transform: translateY(-6px);
   filter: drop-shadow(6px 5px 1px rgb(128, 128, 128, 1.2));
 }
