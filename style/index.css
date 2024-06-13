@@ -11,8 +11,12 @@ body {
   --blue: #156dc0;
   --bg-gray: rgb(246, 246, 246);
   --text-gray: rgb(150, 146, 146, 2);
-
+  /* Border */
   --border: 2px solid rgb(128, 128, 128, 0.2);
+}
+.d-flex-just-cont-space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .margin-left {
