@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="style/aside.css" />
     <link rel="stylesheet" href="style/main.css" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-    <script src="script/main.js"></script>
+
     <script src="script/header.js"></script>
-    <script src="script/script.js"></script>
+    <script src="script/index.js"></script>
     <script src="script/template.js"></script>
+    <script src="script/main.js"></script>
   </head>
 
-  <body onload="includeHTML()">
+  <body onload="includeHTML(), showPostContent()">
     <!-- Header -->
     <section>
       <header w3-include-html="templates/header.html"></header>
@@ -26,8 +27,11 @@
 
     <!-- Content -->
     <section>
+      <!-- Main -->
       <div class="content">
-        <main w3-include-html="templates/main.html"></main>
+        <div id="main_container" class="main-container"></div>
+
+        <!-- Aside -->
         <aside w3-include-html="templates/aside.html"></aside>
       </div>
     </section>

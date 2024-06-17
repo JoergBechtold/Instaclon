@@ -1,5 +1,5 @@
 /* Main CSS */
-.main {
+.main-container {
   padding-top: 102px;
   width: 40%;
   margin-left: 15%;
@@ -132,6 +132,11 @@
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.comment-profile-name-time a {
+  text-decoration: none;
+  color: black;
 }
 
 .comment-time {
