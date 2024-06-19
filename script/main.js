@@ -1,4 +1,7 @@
 //Javascript for Main
+/* Name of my Profile */
+let myProfileName = 'Jörg Bechtold';
+
 let posts = [
   {
     authorImg: '/img/news-logo.jpg',
@@ -7,7 +10,7 @@ let posts = [
     postText: `Europäische Umweltagentur: Wasserqualität deutscher Badegewässer weiter sehr gut Fast alle deutschen Badegewässer erfüllen die
               Mindestanforderungen der Europäischen Umweltagentur. Nur an sieben der mehr als 2.000 Gewässer wurden Mängel festgestellt.`,
     commentProfile: 'Jens Rödder',
-    comments: ['Außer bei unserem See um die Ecke leider nicht :( '],
+    comments: ['Außer bei unserem See um die Ecke leider nicht :('],
     commentTime: 14,
     isLiked: true,
     likes: 1,
@@ -86,16 +89,21 @@ function showPostContent() {
           </span>
         </div>
     
-        <div class="comments-section">
-          <div class="current-comments padding-left-right">
+        <div  class="comments-section">
+         
+        <div id="generated_new_comment_container${i}" class="current-comments d-flex-column padding-left-right">
+            <!-- Generate Comments -->
+            <div class="d-flex-just-cont-space-between">
             <div class="comment-profile-name-time">
-              <div>
+              <div class="d-flex-column">
                 <a class="comment-profile" href="#"><nobr>${post['commentProfile']}</nobr></a>
                 <p" class="comment-time"><nobr>Vor ${post['commentTime']} Stunden</nobr></p>
               </div>
     
               <div id="comment_profile_text${i}" class="comment-profile-text">
-              
+                <span>
+                  ${post['comments']}
+                </span>
               </div>
             </div>
     
@@ -103,7 +111,9 @@ function showPostContent() {
               <img src="/img/icon-heart.svg" alt="herz icon" />
             </div>
           </div>
-    
+        </div>
+           <!-- Generate Comments -->
+        
           <div class="add-new-comment padding-left-right">
             <input class="add-new-comment-input" type="search" name="add-new-comment-input" id="comment_input${i}" placeholder="Kommentar hinzufügen" />
             <button onclick="addNewComent(${i})" class="add-new-comment-button">Posten</button>
@@ -112,20 +122,42 @@ function showPostContent() {
       </div>
       </div>
       `;
-
-    /* For post new comment */
-    let commentProfileText = document.getElementById(`comment_profile_text${i}`);
-
-    for (let j = 0; j < post['comments'].length; j++) {
-      let comment = post['comments'][j];
-      commentProfileText.innerHTML += ` 
-                <span>
-                ${comment}
-                </span>`;
-      // showPostContent();
-    }
   }
 }
 
 /* Button new comment */
-// function addNewComent(index)
+function addNewComent(index) {
+  let commentInput = document.getElementById(`comment_input${index}`);
+  posts[index]['comments'].push(commentInput.value);
+  generateNewCommentContainer(index);
+  commentInput.value = '';
+  // showPostContent();
+}
+
+function generateNewCommentContainer(index) {
+  let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${index}`);
+
+  for (let j = 0; j < posts[index]['comments'].length; j++) {
+    let newComment = posts[j];
+    generateNewCommentContainer.innerHTML += `
+ <div class="d-flex-just-cont-space-between">
+          <div class="comment-profile-name-time">
+            <div class="d-flex-column">
+              <a class="comment-profile" href="#"><nobr>${myProfileName}</nobr></a>
+              <p" class="comment-time"><nobr>Vor ${posts['commentTime']} Stunden</nobr></p>
+            </div>
+  
+            <div id="comment_profile_text${index}" class="comment-profile-text">
+              <span>
+                ${newComment}
+              </span>
+            </div>
+          </div>
+  
+          <div class="comment-heart-icon">
+            <img src="/img/icon-heart.svg" alt="herz icon" />
+          </div>
+   </div>
+`;
+  }
+}

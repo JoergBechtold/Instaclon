@@ -19,6 +19,11 @@ body {
   justify-content: space-between;
 }
 
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .margin-left {
   margin-left: 35px;
 }
