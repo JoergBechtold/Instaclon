@@ -4,9 +4,9 @@ let myProfileName = 'Jörg Bechtold';
 
 let posts = [
   {
-    authorImg: '/img/news-logo.jpg',
+    authorImg: 'img/news-logo.jpg',
     author: 'Lokale News',
-    postImg: '/img/badesee.jpg',
+    postImg: 'img/badesee.jpg',
     postText: `Europäische Umweltagentur: Wasserqualität deutscher Badegewässer weiter sehr gut Fast alle deutschen Badegewässer erfüllen die
               Mindestanforderungen der Europäischen Umweltagentur. Nur an sieben der mehr als 2.000 Gewässer wurden Mängel festgestellt.`,
     commentProfile: 'Jens Rödder',
@@ -16,9 +16,9 @@ let posts = [
     likes: 1,
   },
   {
-    authorImg: '/img/wildcat-logo.png',
+    authorImg: 'img/wildcat-logo.png',
     author: 'Frankfurt Wildcats',
-    postImg: '/img/american-football.jpg',
+    postImg: 'img/american-football.jpg',
     postText: `Spannend bis zum Ende - erst gehen die @hof.jokers früh im ersten Quarter in Führung, dann drehen unsere Specialteams das Spiel mit 4 Field Goals.
                Am Ende hält die Defense und sichert den dritten Sieg mit einer Interception.`,
     commentProfile: 'Max Rothe',
@@ -30,9 +30,9 @@ let posts = [
     likes: 23,
   },
   {
-    authorImg: '/img/profile-picture-6.png',
+    authorImg: 'img/profile-picture-6.png',
     author: 'Lewe MG',
-    postImg: '/img/post-picture.jpg',
+    postImg: 'img/post-picture.jpg',
     postText: `Ich war im Urlaub im Monument Valley, einem der beeindruckendsten Orte, die ich je gesehen habe. Die roten Felsformationen und die weiten, offenen Landschaften sind wirklich atemberaubend. Ich habe Sonnenauf- und -untergänge beobachtet, die den Himmel in lebendige Farben tauchten, und die Stille und Schönheit der Natur genossen. Es war eine unvergessliche Reise, die mir noch lange in Erinnerung bleiben wird.`,
     commentProfile: ['DanielEggers'],
     comments: ['Das klingt absolut fantastisch! Monument Valley muss wirklich ein magischer Ort sein.'],
@@ -58,7 +58,7 @@ function showPostContent() {
           </div>
     
         <div>
-          <img class="tree-dots-icon" src="/img/three-dots-icon.svg" alt="Drei Punkte Icon" />
+          <img class="tree-dots-icon" src="img/three-dots-icon.svg" alt="Drei Punkte Icon" />
         </div>
       </div>
     
@@ -69,12 +69,12 @@ function showPostContent() {
      
         <div class="post-icons padding-left-right">
           <div class="icons-left">
-            <img src="/img/icon-heart.svg" alt="Herz icon" />
-            <img src="/img/icon-comment.svg" alt="Kommentieren icon" />
-            <img src="/img/icon-paper-plane.svg" alt="Nachricht icon" />
+            <img id="heart_icon_like" class="heart-icon-like" src="img/icon-heart.svg" alt="Herz icon" />
+            <img src="img/icon-comment.svg" alt="Kommentieren icon" />
+            <img src="img/icon-paper-plane.svg" alt="Nachricht icon" />
           </div>
           <div class="icons-right">
-            <img src="/img/icon-bookmark.svg" alt="Merken icon" />
+            <img src="img/icon-bookmark.svg" alt="Merken icon" />
           </div>
         </div>
     
@@ -100,7 +100,7 @@ function showPostContent() {
                 <p" class="comment-time"><nobr>Vor ${post['commentTime']} Stunden</nobr></p>
               </div>
     
-              <div id="comment_profile_text${i}" class="comment-profile-text">
+              <div class="comment-profile-text">
                 <span>
                   ${post['comments']}
                 </span>
@@ -108,7 +108,7 @@ function showPostContent() {
             </div>
     
             <div class="comment-heart-icon">
-              <img src="/img/icon-heart.svg" alt="herz icon" />
+              <img src="img/icon-heart.svg" alt="herz icon" />
             </div>
           </div>
         </div>
@@ -136,9 +136,10 @@ function addNewComent(index) {
 
 function generateNewCommentContainer(index) {
   let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${index}`);
+  generateNewCommentContainer.innerHTML = '';
 
   for (let j = 0; j < posts[index]['comments'].length; j++) {
-    let newComment = posts[j];
+    let newComment = posts[index]['comments'][j];
     generateNewCommentContainer.innerHTML += `
  <div class="d-flex-just-cont-space-between">
           <div class="comment-profile-name-time">
@@ -147,7 +148,7 @@ function generateNewCommentContainer(index) {
               <p" class="comment-time"><nobr>Vor ${posts['commentTime']} Stunden</nobr></p>
             </div>
   
-            <div id="comment_profile_text${index}" class="comment-profile-text">
+            <div class="comment-profile-text">
               <span>
                 ${newComment}
               </span>

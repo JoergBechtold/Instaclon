@@ -19,7 +19,7 @@
     <script src="script/main.js"></script>
   </head>
 
-  <body onload="includeHTML(), showPostContent()">
+  <body id="body" onload="includeHTML(), showPostContent()">
     <!-- Header -->
     <section>
       <header w3-include-html="templates/header.html"></header>
@@ -33,6 +33,15 @@
 
         <!-- Aside -->
         <aside w3-include-html="templates/aside.html"></aside>
+      </div>
+
+      <div style="display: none" id="new_post_container" class="new-post-container">
+        <div class="new-post-content">
+          <form onload="return false">
+            <input id="new_post_input" type="search" placeholder="Schreibe hier dein neuen Post..." />
+            <button>Posten</button>
+          </form>
+        </div>
       </div>
     </section>
   </body>
