@@ -43,6 +43,8 @@ let posts = [
   },
 ];
 
+loadComment();
+
 /* Show all posts */
 function showPostContent() {
   document.getElementById('main_container').innerHTML = '';
@@ -50,7 +52,23 @@ function showPostContent() {
   for (let i = 0; i < posts.length; i++) {
     let post = posts[i];
 
-    document.getElementById('main_container').innerHTML += /*HTML*/ `
+    document.getElementById('main_container').innerHTML += generatdetHtmlForAllComments(post, i);
+
+    let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${i}`);
+
+    for (let j = 0; j < post['comments'].length; j++) {
+      let comment = post['comments'][j];
+      let commentProfile = post['commentProfile'][j];
+      let commentTime = post['commentTime'][j];
+
+      generateNewCommentContainer.innerHTML += generatedHtmlForNewComment(comment, commentProfile, commentTime, i);
+    }
+  }
+}
+
+/* Generated HTML for all Comments */
+function generatdetHtmlForAllComments(post, i) {
+  return /*HTML*/ `
     <div class="post-container">
         <div class="post-headline">
           <div class="post-headline-content">
@@ -105,48 +123,59 @@ function showPostContent() {
       </div>
       </div>
       `;
+}
 
-    let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${i}`);
+/* Generated For-Loop and HTML add new comment */
+function generatedHtmlForNewComment(comment, commentProfile, commentTime, i) {
+  return /*HTML*/ `
+<div class="d-flex-just-cont-space-between">
+<div class="comment-profile-name-time">
+  <div class="d-flex-column">
+    <a class="comment-profile" href="#"><nobr>${commentProfile}</nobr></a>
+    <p" class="comment-time"><nobr>Vor ${commentTime} Stunden</nobr></p>
+  </div>
 
-    for (let j = 0; j < post['comments'].length; j++) {
-      let comment = post['comments'][j];
-      let commentProfile = post['commentProfile'][j];
-      let commentTime = post['commentTime'][j];
-      generateNewCommentContainer.innerHTML += `
-      <div class="d-flex-just-cont-space-between">
-        <div class="comment-profile-name-time">
-          <div class="d-flex-column">
-            <a class="comment-profile" href="#"><nobr>${commentProfile}</nobr></a>
-            <p" class="comment-time"><nobr>Vor ${commentTime} Stunden</nobr></p>
-          </div>
+  <div class="comment-profile-text">
+    <span>
+      ${comment}
+    </span>
+  </div>
+</div>
 
-          <div class="comment-profile-text">
-            <span>
-              ${comment}
-            </span>
-          </div>
-        </div>
-
-        <div class="comment-heart-icon">
-          <img src="img/icon-heart.svg" alt="herz icon" />
-        </div>
-
-         <div class="delete-icon">
-          <img src="img/xmark-search.svg" alt="Löschen" />
-        </div>
-
-        
-      </div>
-        `;
-    }
-  }
+<div class="comment-heart-delete-x">
+  <img src="img/icon-heart.svg" alt="herz icon" />
+</div>
+</div>
+`;
 }
 
 /* Button new comment */
 function addNewComment(index) {
+  pushNewCommentInJason(index);
+  saveComment(index);
+  showPostContent();
+}
+
+/* Push the new comment in JASON array */
+function pushNewCommentInJason(index) {
   let commentInput = document.getElementById(`comment_input${index}`);
   posts[index]['comments'].push(commentInput.value);
   posts[index]['commentProfile'].push(myProfileName);
   posts[index]['commentTime'].push(1);
-  showPostContent();
+}
+
+/* Save new comment in Localstorage */
+function saveComment(index) {
+  // let commentsAsText = JSON.stringify(`${posts[index]['comments']}`);
+  let jasonArrayAsText = JSON.stringify(posts);
+  localStorage.setItem('Kommentar', jasonArrayAsText);
+}
+
+/* Load new comment from localstorage */
+function loadComment() {
+  let jasonArrayAsText = localStorage.getItem('Kommentar');
+
+  if (jasonArrayAsText) {
+    posts = JSON.parse(jasonArrayAsText);
+  }
 }
