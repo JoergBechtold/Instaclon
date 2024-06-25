@@ -39,7 +39,14 @@
       <div style="display: none" id="new_post_container" onclick="closeNewPostContainer()" class="new-post-container">
         <div class="new-post-content" onclick="doNotClose(event)">
           <form onsubmit="return false">
-            <input id="new_post_input" type="search" placeholder="Schreibe hier dein neuen Post..." />
+            <input
+              autofocus
+              class="new-post-input"
+              name="new-post"
+              id="new_post_input"
+              type="search"
+              placeholder="Schreibe hier dein neuen Post..."
+            />
             <button>Posten</button>
           </form>
           <div class="close-btn">

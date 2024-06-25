@@ -27,7 +27,7 @@ let posts = [
       'Eine Wahnsinns Stimmung im Stadion',
     ],
     commentTime: [4, 1],
-    isLiked: true,
+    isLiked: false,
     likes: 23,
   },
   {
@@ -38,7 +38,7 @@ let posts = [
     commentProfile: ['DanielDer5.', 'Ramon Deggers'],
     comments: ['Das klingt absolut fantastisch! Monument Valley muss wirklich ein magischer Ort sein.', 'Ich war 2018 da. Einfch wunderschön'],
     commentTime: [12, 10],
-    isLiked: true,
+    isLiked: false,
     likes: 7,
   },
 ];
@@ -88,7 +88,8 @@ function generatdetHtmlForAllComments(post, i) {
      
         <div class="post-icons padding-left-right">
           <div class="icons-left">
-            <img id="heart_icon_like" class="heart-icon-like" src="img/icon-heart.svg" alt="Herz icon" />
+            <img onclick="likeIt(${i})" id="heart_icon_like${i}" class="heart-icon-like" src="img/icon-heart.svg" alt="Herz icon" />
+            <img style="display: none"  onclick="dislike(${i})" id="heart_icon_like_red${i}" class="heart-icon-like-red" src="img/red-heart.svg" alt="Herz icon rot" />
             <img src="img/icon-comment.svg" alt="Kommentieren icon" />
             <img src="img/icon-paper-plane.svg" alt="Nachricht icon" />
           </div>
@@ -99,7 +100,7 @@ function generatdetHtmlForAllComments(post, i) {
     
         <div class="liks-section padding-left-right">
           <h3>Gefällt</h3>
-          <p>${post['likes']} Mal</p>
+          <p id="post_likes${i}">${post['likes']} Mal</p>
         </div>
     
         <div class="post-text padding-left-right">
@@ -116,8 +117,8 @@ function generatdetHtmlForAllComments(post, i) {
            
         
           <div class="add-new-comment padding-left-right">
-            <input class="add-new-comment-input" type="search" name="add-new-comment-input" id="comment_input${i}" placeholder="Kommentar hinzufügen" />
-            <button onclick="addNewComment(${i})" class="add-new-comment-button">Posten</button>
+            <input onkeyup="valideInputField(${i})"  class="add-new-comment-input" type="text" name="add-new-comment-input" id="comment_input${i}" placeholder="Kommentar hinzufügen" />
+            <button disabled   id="btn_new_comment${i}" onclick="addNewComment(${i})" class="add-new-comment-button">Posten</button>
           </div>
         </div> 
       </div>
@@ -156,9 +157,21 @@ function addNewComment(index) {
   showPostContent();
 }
 
+/* Valide the Input Vield */
+function valideInputField(index) {
+  let commentInput = document.getElementById(`comment_input${index}`);
+
+  if (commentInput.value.length == 0) {
+    document.getElementById(`btn_new_comment${index}`).disabled = true;
+  } else {
+    document.getElementById(`btn_new_comment${index}`).disabled = false;
+  }
+}
+
 /* Push the new comment in JASON array */
 function pushNewCommentInJason(index) {
   let commentInput = document.getElementById(`comment_input${index}`);
+
   posts[index]['comments'].push(commentInput.value);
   posts[index]['commentProfile'].push(myProfileName);
   posts[index]['commentTime'].push(1);
@@ -166,16 +179,34 @@ function pushNewCommentInJason(index) {
 
 /* Save new comment in Localstorage */
 function saveComment(index) {
-  // let commentsAsText = JSON.stringify(`${posts[index]['comments']}`);
   let jasonArrayAsText = JSON.stringify(posts);
   localStorage.setItem('Kommentar', jasonArrayAsText);
 }
 
 /* Load new comment from localstorage */
-function loadComment() {
+function loadComment(i) {
   let jasonArrayAsText = localStorage.getItem('Kommentar');
 
   if (jasonArrayAsText) {
     posts = JSON.parse(jasonArrayAsText);
   }
+}
+
+function showLikeIt() {
+  if ((posts['isLiked'] = false)) {
+    document.getElementById(`heart_icon_like`).style.display = 'flex';
+    document.getElementById(`heart_icon_like_red`).style.display = 'none';
+  }
+  if ((posts['isLiked'] = true)) {
+    document.getElementById(`heart_icon_like`).style.display = 'none';
+    document.getElementById(`heart_icon_like_red`).style.display = 'flex';
+  }
+  // let postLikes = document.getElementById('post_likes${i}');
+
+  // postLikes.innerHTML += /*HTML*/ `<p>1000</p>`;
+}
+
+function dislike(i) {
+  document.getElementById(`heart_icon_like${i}`).style.display = 'flex';
+  document.getElementById(`heart_icon_like_red${i}`).style.display = 'none';
 }

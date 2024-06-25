@@ -176,7 +176,7 @@
 }
 
 .add-new-comment-input {
-  width: 100%;
+  width: 80%;
   font-size: 18px;
   outline: none;
   border: none;
@@ -200,5 +200,11 @@
   background-color: white;
   cursor: pointer;
   height: 100%;
-  width: 15%;
+  width: 20%;
+}
+
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  color: var(--light-blue);
 }
