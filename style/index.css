@@ -72,6 +72,7 @@ body {
   background-color: var(--bg-gray);
   width: 100%;
   min-height: 100vh;
+  display: flex;
 }
 
 .link-style {

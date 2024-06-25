@@ -153,12 +153,12 @@
   gap: 15px;
 }
 
-.comment-heart-delete-x {
+.comment-heart {
   gap: 8px;
   display: flex;
 }
 
-.comment-heart-delete-x img {
+.comment-heart img {
   cursor: pointer;
   object-fit: cover;
   height: 20px;

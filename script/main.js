@@ -12,7 +12,7 @@ let posts = [
     commentProfile: ['Jens Rödder'],
     comments: ['Außer bei unserem See um die Ecke leider nicht :('],
     commentTime: [14],
-    isLiked: true,
+    isLiked: false,
     likes: 1,
   },
   {
@@ -54,15 +54,59 @@ function showPostContent() {
 
     document.getElementById('main_container').innerHTML += generatdetHtmlForAllComments(post, i);
 
-    let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${i}`);
+    forLoopAllComments(post, i);
+  }
+}
 
-    for (let j = 0; j < post['comments'].length; j++) {
-      let comment = post['comments'][j];
-      let commentProfile = post['commentProfile'][j];
-      let commentTime = post['commentTime'][j];
+/*  Generated HTML add new comment */
+function generatedHtmlForNewComment(comment, commentProfile, commentTime, i) {
+  return /*HTML*/ `
+<div class="d-flex-just-cont-space-between">
+<div class="comment-profile-name-time">
+  <div class="d-flex-column">
+    <a class="comment-profile" href="#"><nobr>${commentProfile}</nobr></a>
+    <p id="comment_time${i}" class="comment-time"><nobr>Vor ${commentTime} Stunden</nobr></p>
+  </div>
 
-      generateNewCommentContainer.innerHTML += generatedHtmlForNewComment(comment, commentProfile, commentTime, i);
-    }
+  <div class="comment-profile-text">
+    <span>
+      ${comment}
+    </span>
+  </div>
+</div>
+
+<div class="comment-heart">
+  <img src="img/icon-heart.svg" alt="herz icon" />
+</div>
+</div>
+`;
+}
+
+/* Generated For-Loop all comments */
+function forLoopAllComments(post, i) {
+  let generateNewCommentContainer = document.getElementById(`generated_new_comment_container${i}`);
+
+  for (let j = 0; j < post['comments'].length; j++) {
+    let comment = post['comments'][j];
+    let commentProfile = post['commentProfile'][j];
+    let commentTime = post['commentTime'][j];
+
+    generateNewCommentContainer.innerHTML += generatedHtmlForNewComment(comment, commentProfile, commentTime, i);
+
+    valideTrueOrFalse(i);
+    // increaseCommentTime(i, j);
+    setInterval(increaseCommentTime(i, j), 1500);
+  }
+}
+
+/* If likes true or False Function */
+function valideTrueOrFalse(i) {
+  if (posts[i]['isLiked'] == true) {
+    document.getElementById(`heart_icon_like${i}`).style.display = 'none';
+    document.getElementById(`heart_icon_like_red${i}`).style.display = 'flex';
+  } else {
+    document.getElementById(`heart_icon_like${i}`).style.display = 'flex';
+    document.getElementById(`heart_icon_like_red${i}`).style.display = 'none';
   }
 }
 
@@ -126,36 +170,14 @@ function generatdetHtmlForAllComments(post, i) {
       `;
 }
 
-/* Generated For-Loop and HTML add new comment */
-function generatedHtmlForNewComment(comment, commentProfile, commentTime, i) {
-  return /*HTML*/ `
-<div class="d-flex-just-cont-space-between">
-<div class="comment-profile-name-time">
-  <div class="d-flex-column">
-    <a class="comment-profile" href="#"><nobr>${commentProfile}</nobr></a>
-    <p" class="comment-time"><nobr>Vor ${commentTime} Stunden</nobr></p>
-  </div>
-
-  <div class="comment-profile-text">
-    <span>
-      ${comment}
-    </span>
-  </div>
-</div>
-
-<div class="comment-heart-delete-x">
-  <img src="img/icon-heart.svg" alt="herz icon" />
-</div>
-</div>
-`;
-}
-
 /* Button new comment */
 function addNewComment(index) {
   pushNewCommentInJason(index);
-  saveComment(index);
+  saveJason();
   showPostContent();
 }
+
+/* Like dislike heart btn */
 
 /* Valide the Input Vield */
 function valideInputField(index) {
@@ -178,7 +200,7 @@ function pushNewCommentInJason(index) {
 }
 
 /* Save new comment in Localstorage */
-function saveComment(index) {
+function saveJason() {
   let jasonArrayAsText = JSON.stringify(posts);
   localStorage.setItem('Kommentar', jasonArrayAsText);
 }
@@ -192,21 +214,39 @@ function loadComment(i) {
   }
 }
 
-function showLikeIt() {
-  if ((posts['isLiked'] = false)) {
-    document.getElementById(`heart_icon_like`).style.display = 'flex';
-    document.getElementById(`heart_icon_like_red`).style.display = 'none';
-  }
-  if ((posts['isLiked'] = true)) {
-    document.getElementById(`heart_icon_like`).style.display = 'none';
-    document.getElementById(`heart_icon_like_red`).style.display = 'flex';
-  }
-  // let postLikes = document.getElementById('post_likes${i}');
-
-  // postLikes.innerHTML += /*HTML*/ `<p>1000</p>`;
+function likeIt(i) {
+  posts[i]['isLiked'] = true;
+  numberofLikesPlus(i);
+  saveJason();
+  loadComment();
+  showPostContent();
 }
 
 function dislike(i) {
-  document.getElementById(`heart_icon_like${i}`).style.display = 'flex';
-  document.getElementById(`heart_icon_like_red${i}`).style.display = 'none';
+  posts[i]['isLiked'] = false;
+  numberofLikesMinus(i);
+  saveJason();
+  loadComment();
+  showPostContent();
+}
+
+/* number of Like Plus */
+function numberofLikesPlus(i) {
+  posts[i]['likes']++;
+}
+
+/* number of Likes Minus */
+function numberofLikesMinus(i) {
+  posts[i]['likes']--;
+}
+
+/* eröhe die zeit jedes stunde */
+function increaseCommentTime(i, j) {
+  let commentTime = document.getElementById('comment_time${i}');
+
+  let time = posts[i]['commentTime'][j]++;
+
+  commentTime.innerHTML += /*HTML*/ `
+  <p>Vor ${time} Stunden</p>
+  `;
 }
