@@ -1,6 +1,7 @@
 //Javascript for Main
 /* Name of my Profile */
-let myProfileName = 'Jörg Bechtold';
+let myProfileName = 'jörg_Bechtold';
+let myProfilePicture = 'img/my-account.picture.jpg';
 
 let posts = [
   {
@@ -26,7 +27,7 @@ let posts = [
       'Mega geil! Freue mich so derbe über euren Sieg gegen Hof wurde längst mal wieder zeit! Alles Gute für die weitere Saison lassts krachen! Schelle und Punkte!',
       'Eine Wahnsinns Stimmung im Stadion',
     ],
-    commentTime: [4, 1],
+    commentTime: [4, 2],
     isLiked: false,
     likes: 23,
   },
@@ -94,8 +95,6 @@ function forLoopAllComments(post, i) {
     generateNewCommentContainer.innerHTML += generatedHtmlForNewComment(comment, commentProfile, commentTime, i);
 
     valideTrueOrFalse(i);
-    // increaseCommentTime(i, j);
-    setInterval(increaseCommentTime(i, j), 1500);
   }
 }
 
@@ -177,8 +176,6 @@ function addNewComment(index) {
   showPostContent();
 }
 
-/* Like dislike heart btn */
-
 /* Valide the Input Vield */
 function valideInputField(index) {
   let commentInput = document.getElementById(`comment_input${index}`);
@@ -190,13 +187,23 @@ function valideInputField(index) {
   }
 }
 
+/* Valide the new post input vield */
+function valideInputNewPost() {
+  let newPostInput = document.getElementById('new_post_input');
+  if (newPostInput.value.length == 0) {
+    document.getElementById('btn_new_post').disabled = true;
+  } else {
+    document.getElementById('btn_new_post').disabled = false;
+  }
+}
+
 /* Push the new comment in JASON array */
 function pushNewCommentInJason(index) {
   let commentInput = document.getElementById(`comment_input${index}`);
 
   posts[index]['comments'].push(commentInput.value);
   posts[index]['commentProfile'].push(myProfileName);
-  posts[index]['commentTime'].push(1);
+  posts[index]['commentTime'].push(0);
 }
 
 /* Save new comment in Localstorage */
@@ -249,4 +256,31 @@ function increaseCommentTime(i, j) {
   commentTime.innerHTML += /*HTML*/ `
   <p>Vor ${time} Stunden</p>
   `;
+}
+
+/* New Post */
+function newPost() {
+  pushNewPost();
+  saveJason();
+  loadComment();
+  showPostContent();
+}
+
+/* Push New Post ti JASON Array */
+function pushNewPost() {
+  let newPostInputValue = document.getElementById('new_post_input').value;
+
+  posts.push({
+    authorImg: myProfilePicture,
+    author: myProfileName,
+    postImg: ``,
+    postText: newPostInputValue,
+    commentProfile: [],
+    comments: [],
+    commentTime: [],
+    isLiked: false,
+    likes: [0],
+  });
+
+  removeNewPostContainer(); //function in header.script
 }

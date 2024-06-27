@@ -14,7 +14,6 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
     <script src="script/header.js"></script>
-    <script src="script/index.js"></script>
     <script src="script/template.js"></script>
     <script src="script/main.js"></script>
   </head>
@@ -38,19 +37,33 @@
       <!-- New Post Section -->
       <div style="display: none" id="new_post_container" onclick="closeNewPostContainer()" class="new-post-container">
         <div class="new-post-content" onclick="doNotClose(event)">
-          <form onsubmit="return false">
-            <input
+          <div class="headline-new-post">
+            <h1>Erstelle einen neuen Beitrag</h1>
+          </div>
+          <div class="new-post-profile-add-post">
+            <div class="new-post-profile-img-name">
+              <img src="img/my-account.picture.jpg" alt="Mein Profil bild" />
+              <p>Jörg Bechtold</p>
+            </div>
+
+            <textarea
+              cols="30"
+              rows="12"
               autofocus
-              class="new-post-input"
+              onkeyup="valideInputNewPost()"
               name="new-post"
               id="new_post_input"
-              type="search"
+              type="text"
               placeholder="Schreibe hier dein neuen Post..."
-            />
-            <button>Posten</button>
-          </form>
-          <div class="close-btn">
-            <button onclick=" closeNewPostContainer()">X</button>
+            ></textarea>
+
+            <div class="d-flex-justify-center">
+              <button disabled id="btn_new_post" class="add-new-post-button" onclick="newPost()">Posten</button>
+            </div>
+
+            <div class="close-btn">
+              <button onclick="closeNewPostContainer()"><img src="img/xmark-search.svg" alt="Schließen button" /></button>
+            </div>
           </div>
         </div>
       </div>

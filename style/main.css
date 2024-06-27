@@ -191,7 +191,8 @@
   opacity: 0;
 }
 
-.add-new-comment-button {
+.add-new-comment-button,
+.add-new-post-button {
   font-size: 18px;
   color: var(--blue);
   font-weight: bold;
@@ -207,4 +208,13 @@ button:disabled,
 button[disabled] {
   cursor: not-allowed;
   color: var(--light-blue);
+}
+
+.add-new-post-input {
+  word-wrap: break-word;
+  width: -webkit-fill-available;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 24px 0 24px 10px;
 }
