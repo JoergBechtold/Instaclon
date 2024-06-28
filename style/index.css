@@ -140,7 +140,7 @@ body {
   width: 25%;
   max-height: 80%;
   min-height: 20%;
-  box-shadow: 5px 5px 5px gray;
+  box-shadow: 0px 0px 19px 6px gray;
   background-color: white;
 }
 
@@ -160,9 +160,9 @@ body {
   outline: none;
 }
 
-.new-post-content textarea:focus::placeholder {
+/* .new-post-content textarea:focus::placeholder {
   opacity: 0;
-}
+} */
 
 .new-post-content textarea::placeholder {
   font-weight: bold;

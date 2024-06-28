@@ -93,19 +93,6 @@ function forLoopAllComments(post, i) {
     let commentTime = post['commentTime'][j];
 
     generateNewCommentContainer.innerHTML += generatedHtmlForNewComment(comment, commentProfile, commentTime, i);
-
-    valideTrueOrFalse(i);
-  }
-}
-
-/* If likes true or False Function */
-function valideTrueOrFalse(i) {
-  if (posts[i]['isLiked'] == true) {
-    document.getElementById(`heart_icon_like${i}`).style.display = 'none';
-    document.getElementById(`heart_icon_like_red${i}`).style.display = 'flex';
-  } else {
-    document.getElementById(`heart_icon_like${i}`).style.display = 'flex';
-    document.getElementById(`heart_icon_like_red${i}`).style.display = 'none';
   }
 }
 
@@ -131,8 +118,9 @@ function generatdetHtmlForAllComments(post, i) {
      
         <div class="post-icons padding-left-right">
           <div class="icons-left">
-            <img onclick="likeIt(${i})" id="heart_icon_like${i}" class="heart-icon-like" src="img/icon-heart.svg" alt="Herz icon" />
-            <img style="display: none"  onclick="dislike(${i})" id="heart_icon_like_red${i}" class="heart-icon-like-red" src="img/red-heart.svg" alt="Herz icon rot" />
+
+          ${getLikedImgTemlate(i)}
+
             <img src="img/icon-comment.svg" alt="Kommentieren icon" />
             <img src="img/icon-paper-plane.svg" alt="Nachricht icon" />
           </div>
@@ -213,7 +201,7 @@ function saveJason() {
 }
 
 /* Load new comment from localstorage */
-function loadComment(i) {
+function loadComment() {
   let jasonArrayAsText = localStorage.getItem('Kommentar');
 
   if (jasonArrayAsText) {
@@ -221,9 +209,17 @@ function loadComment(i) {
   }
 }
 
+function getLikedImgTemlate(i) {
+  if (posts[i]['isLiked'] == true) {
+    return `<img onclick="dislike(${i})" id="heart_icon_like_red${i}" class="heart-icon-like-red" src="img/red-heart.svg" alt="Herz icon rot" />`;
+  } else {
+    return `<img onclick="likeIt(${i})" id="heart_icon_like${i}" class="heart-icon-like" src="img/icon-heart.svg" alt="Herz icon" />`;
+  }
+}
+
 function likeIt(i) {
   posts[i]['isLiked'] = true;
-  numberofLikesPlus(i);
+  numberoOfLikesPlus(i);
   saveJason();
   loadComment();
   showPostContent();
@@ -238,7 +234,7 @@ function dislike(i) {
 }
 
 /* number of Like Plus */
-function numberofLikesPlus(i) {
+function numberoOfLikesPlus(i) {
   posts[i]['likes']++;
 }
 
@@ -268,19 +264,20 @@ function newPost() {
 
 /* Push New Post ti JASON Array */
 function pushNewPost() {
-  let newPostInputValue = document.getElementById('new_post_input').value;
+  let newPostInputValue = document.getElementById('new_post_input');
 
   posts.push({
     authorImg: myProfilePicture,
     author: myProfileName,
-    postImg: ``,
-    postText: newPostInputValue,
+    postImg: '',
+    postText: newPostInputValue.value,
     commentProfile: [],
     comments: [],
     commentTime: [],
     isLiked: false,
-    likes: [0],
+    likes: 0,
   });
-
+  newPostInputValue.value = '';
+  valideInputNewPost();
   removeNewPostContainer(); //function in header.script
 }
