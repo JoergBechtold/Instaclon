@@ -158,11 +158,8 @@ body {
   font-size: 24px;
   resize: none;
   outline: none;
+  caret-color: var(--blue);
 }
-
-/* .new-post-content textarea:focus::placeholder {
-  opacity: 0;
-} */
 
 .new-post-content textarea::placeholder {
   font-weight: bold;

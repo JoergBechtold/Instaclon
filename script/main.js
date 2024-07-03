@@ -113,7 +113,7 @@ function generatdetHtmlForAllComments(post, i) {
     
       <div class="post-content">
         <div class="post-img">
-          <img src="${post['postImg']}" alt="Post Bild" />
+          <img ondblclick="likeIt(${i})" src="${post['postImg']}" alt="Post Bild" />
         </div>
      
         <div class="post-icons padding-left-right">

@@ -57,6 +57,7 @@ header {
   outline: none;
   border: none;
   background: transparent;
+  caret-color: var(--blue);
 }
 
 .search-icon {

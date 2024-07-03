@@ -181,6 +181,7 @@
   outline: none;
   border: none;
   padding: 24px 0 24px 0;
+  caret-color: var(--blue);
 }
 
 .add-new-comment-input::placeholder {
