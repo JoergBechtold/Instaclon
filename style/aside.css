@@ -14,7 +14,7 @@
 
 /* width */
 .aside::-webkit-scrollbar {
-  width: 6px;
+  width: 2px;
 }
 
 /* Track */

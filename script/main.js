@@ -53,8 +53,8 @@ function showPostContent() {
   for (let i = 0; i < posts.length; i++) {
     let post = posts[i];
 
-    document.getElementById('main_container').innerHTML += generatdetHtmlForAllComments(post, i);
-
+    document.getElementById('main_container').innerHTML += generatdetHtmlForAllPosts(post, i);
+    checkPostImg(i);
     forLoopAllComments(post, i);
   }
 }
@@ -96,8 +96,8 @@ function forLoopAllComments(post, i) {
   }
 }
 
-/* Generated HTML for all Comments */
-function generatdetHtmlForAllComments(post, i) {
+/* Generated HTML for all Posts */
+function generatdetHtmlForAllPosts(post, i) {
   return /*HTML*/ `
     <div class="post-container">
         <div class="post-headline">
@@ -110,12 +110,14 @@ function generatdetHtmlForAllComments(post, i) {
           <img class="tree-dots-icon" src="img/three-dots-icon.svg" alt="Drei Punkte Icon" />
         </div>
       </div>
+
+       
     
-      <div class="post-content">
-        <div class="post-img">
+      <div  class="post-content">
+        <div id="new_post_img${i}" class="post-img">
           <img ondblclick="likeIt(${i})" src="${post['postImg']}" alt="Post Bild" />
         </div>
-     
+
         <div class="post-icons padding-left-right">
           <div class="icons-left">
 
@@ -154,6 +156,7 @@ function generatdetHtmlForAllComments(post, i) {
         </div> 
       </div>
       </div>
+      
       `;
 }
 
@@ -280,4 +283,11 @@ function pushNewPost() {
   newPostInputValue.value = '';
   valideInputNewPost();
   removeNewPostContainer(); //function in header.script
+}
+
+/* check if there is a picture */
+function checkPostImg(i) {
+  if (posts[i]['postImg'].length === 0) {
+    document.getElementById(`new_post_img${i}`).classList.add('d-none');
+  }
 }
