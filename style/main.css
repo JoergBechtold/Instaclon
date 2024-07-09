@@ -53,7 +53,8 @@
 .tree-dots-icon {
   border-radius: 50%;
   object-fit: cover;
-  height: 30px;
+  /* height: 30px; */
+  aspect-ratio: 1/1;
   width: 30px;
   cursor: pointer;
 }
@@ -80,7 +81,8 @@
 .icons-left img {
   cursor: pointer;
   object-fit: cover;
-  height: 35px;
+  aspect-ratio: 1/1;
+  /* height: 35px; */
   width: 35px;
 }
 
@@ -104,7 +106,12 @@
   justify-content: flex-start;
 }
 
+.liks-section h3 {
+  font-size: 20px;
+}
+
 .liks-section p {
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -113,6 +120,7 @@
 }
 
 .post-text span {
+  font-size: 16px;
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -130,6 +138,7 @@
 }
 
 .comment-profile {
+  font-size: 16px;
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -141,10 +150,18 @@
 }
 
 .comment-time {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-gray);
   margin-top: 0px;
   margin-bottom: 5px;
+}
+
+.comment-profile-name-time a {
+  font-size: 15px !important;
+}
+
+.comment-profile-text span {
+  font-size: 15px;
 }
 
 .comment-profile-name-text {
@@ -219,4 +236,44 @@ button[disabled] {
   outline: none;
   border: none;
   padding: 24px 0 24px 10px;
+}
+
+/* Responsive */
+@media (max-width: 1360px) {
+  .author-img {
+    width: 65px;
+  }
+
+  .post-headline-content a {
+    font-size: 16px !important;
+  }
+
+  .tree-dots-icon {
+    width: 27px;
+  }
+
+  .icons-left img {
+    width: 32px;
+  }
+
+  .icons-right img {
+    height: 40px;
+    width: 29px;
+  }
+
+  .liks-section h3 {
+    font-size: 18px;
+  }
+
+  .liks-section p {
+    font-size: 18px;
+  }
+
+  .add-new-comment-input {
+    font-size: 17px;
+  }
+
+  .add-new-comment-button {
+    font-size: 17px;
+  }
 }
