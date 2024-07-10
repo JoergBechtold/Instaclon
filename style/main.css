@@ -245,7 +245,7 @@ button[disabled] {
   }
 
   .post-headline-content a {
-    font-size: 16px !important;
+    font-size: 16px;
   }
 
   .tree-dots-icon {
@@ -275,5 +275,20 @@ button[disabled] {
 
   .add-new-comment-button {
     font-size: 17px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .main-container {
+    margin-left: 10%;
+    width: 43%;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-container {
+    padding-top: 0;
+    margin-right: 10%;
+    width: 100%;
   }
 }

@@ -64,9 +64,8 @@ body {
   justify-content: center;
 }
 
-.margin-left-right-px {
+.margin-left-px {
   margin-left: 35px;
-  margin-right: 35px;
 }
 
 .margin-left-right {
@@ -102,6 +101,7 @@ body {
 
 .p-black,
 .p-gray {
+  white-space: nowrap;
   font-size: 22px;
   margin: 4px 0 4px 0;
 }
@@ -228,4 +228,15 @@ body {
 
 .new-post-profile-img-name p {
   font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .margin-left-right {
+    margin: 0 10% 0 10%;
+  }
+
+  .margin-left-right-px {
+    margin: 0;
+  }
 }

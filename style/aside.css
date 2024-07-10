@@ -48,7 +48,7 @@
 .profile-section {
   margin-top: 100px;
   margin-bottom: 40px;
-  gap: 55px;
+  /* gap: 55px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,6 +79,7 @@
 }
 
 .profiles-container {
+  gap: 25px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -89,6 +90,58 @@
   gap: 25px;
   display: flex;
   align-items: center;
+}
+
+.aside-mobile-view {
+  background-color: var(--light-gray);
+  /* position: fixed; */
+  /* top: 102px; */
+  padding-top: 102px;
+  /* left: 0; */
+  /* right: 0; */
+  overflow-x: scroll;
+  display: none;
+}
+
+/* height */
+.aside-mobile-view::-webkit-scrollbar {
+  height: 2px;
+}
+
+.aside-mobile-view-content {
+  /* margin-top: 25px; */
+  padding-top: 10px;
+  width: 100%;
+  margin: 0 10% 0 10%;
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  gap: 30px;
+}
+
+.profil-picture-mobile-view {
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  width: 80px;
+  aspect-ratio: 1/1;
+}
+
+.profile-img-name-mobile-view {
+  width: 82px;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-profile-picture-mobile-view {
+  position: relative;
+}
+
+.bla {
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }
 
 /* Responsive */
@@ -148,4 +201,34 @@
   .suggestion-headline h1 {
     font-size: 17px;
   }
+}
+
+@media (max-width: 1180px) {
+  .aside {
+    margin-right: 10%;
+    width: 32%;
+  }
+  .profile-section {
+    margin-top: 25px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .aside {
+    display: none;
+  }
+  .aside-mobile-view {
+    display: flex;
+  }
+
+  .p-black {
+    font-size: 13px;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 815px) {
 }
