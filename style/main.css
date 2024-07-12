@@ -161,7 +161,9 @@
 }
 
 .comment-profile-text span {
+  margin-right: 4px;
   font-size: 15px;
+  word-break: break-word;
 }
 
 .comment-profile-name-text {
@@ -174,6 +176,7 @@
 .comment-heart {
   gap: 8px;
   display: flex;
+  height: fit-content;
 }
 
 .comment-heart img {
@@ -289,6 +292,52 @@ button[disabled] {
   .main-container {
     padding-top: 0;
     margin-right: 10%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .icons-left img {
+    width: 24px;
+  }
+  .icons-right img {
+    height: 27px;
+    width: 19px;
+  }
+
+  .tree-dots-icon {
+    width: 25px;
+  }
+
+  .liks-section h3 {
+    font-size: 16px;
+  }
+
+  .liks-section p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 550px) {
+  /* .icons-right img {
+    height: 34px;
+    width: 25px;
+  } */
+
+  .main-container {
+    margin-left: 0;
+    margin-right: 0;
     width: 100%;
   }
+
+  .post-container {
+    border-bottom: var(--border);
+    border-top: var(--border);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 525px) {
 }

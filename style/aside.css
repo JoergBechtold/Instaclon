@@ -99,24 +99,23 @@
   padding-top: 102px;
   /* left: 0; */
   /* right: 0; */
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   display: none;
 }
 
-/* height */
-.aside-mobile-view::-webkit-scrollbar {
-  height: 2px;
-}
-
 .aside-mobile-view-content {
-  /* margin-top: 25px; */
-  padding-top: 10px;
+  padding-top: 16px;
   width: 100%;
   margin: 0 10% 0 10%;
   display: flex;
   justify-content: space-between;
-  /* flex-direction: column; */
-  gap: 30px;
+  /* gap: 30px; */
+  overflow-x: scroll;
+}
+
+/* height */
+.aside-mobile-view-content::-webkit-scrollbar {
+  height: 2px;
 }
 
 .profil-picture-mobile-view {
@@ -131,17 +130,9 @@
 .profile-img-name-mobile-view {
   width: 82px;
   display: flex;
+  margin-left: 15px;
+  margin-right: 15px;
   flex-direction: column;
-}
-
-.my-profile-picture-mobile-view {
-  position: relative;
-}
-
-.bla {
-  position: absolute;
-  top: 25px;
-  right: 25px;
 }
 
 /* Responsive */
@@ -230,5 +221,20 @@
   }
 }
 
-@media (max-width: 815px) {
+@media (max-width: 550px) {
+  .aside-mobile-view {
+    padding-top: 0px;
+  }
+  .profil-picture-mobile-view {
+    width: 73px;
+  }
+  .aside-mobile-view-content {
+    margin: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .aside-mobile-view-content::-webkit-scrollbar {
+    display: none;
+  }
 }

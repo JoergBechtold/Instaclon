@@ -44,6 +44,9 @@
         <div class="new-post-content" onclick="doNotClose(event)">
           <div class="headline-new-post">
             <h1>Erstelle einen neuen Beitrag</h1>
+            <div class="close-btn">
+              <button onclick="closeNewPostContainer()"><img src="img/xmark-search.svg" alt="Schließen button" /></button>
+            </div>
           </div>
           <div class="new-post-profile-add-post">
             <div class="new-post-profile-img-name">
@@ -52,8 +55,11 @@
             </div>
 
             <textarea
+              text-wrap:
+              pretty
               cols="30"
               rows="12"
+              maxlength="500"
               onkeyup="valideInputNewPost()"
               name="new-post"
               id="new_post_input"
@@ -65,9 +71,9 @@
               <button disabled id="btn_new_post" class="add-new-post-button" onclick="newPost()">Posten</button>
             </div>
 
-            <div class="close-btn">
+            <!-- <div class="close-btn">
               <button onclick="closeNewPostContainer()"><img src="img/xmark-search.svg" alt="Schließen button" /></button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

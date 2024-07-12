@@ -214,4 +214,8 @@
   .navigation-mobile-view {
     display: flex;
   }
+
+  .size-mobile-view {
+    width: 40px !important;
+  }
 }

@@ -52,6 +52,7 @@ body {
 .d-flex-just-cont-space-between {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .d-flex-column {
@@ -79,8 +80,9 @@ body {
 .content {
   background-color: var(--bg-gray);
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
+  overflow: hidden;
 }
 
 .link-style {
@@ -129,8 +131,7 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  /* overflow: hidden; */
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -238,5 +239,57 @@ body {
 
   .margin-left-right-px {
     margin: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .new-post-content textarea {
+    font-size: 20px;
+    height: 134px;
+  }
+
+  .close-btn {
+    top: 12px;
+  }
+
+  .headline-new-post h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    padding-bottom: 55px;
+  }
+}
+
+@media (max-width: 540px) {
+  .new-post-content {
+    max-width: unset;
+    min-width: unset;
+    width: 100%;
+  }
+  .close-btn {
+    right: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .close-btn {
+    right: 8px;
+    top: 15px;
+  }
+  .close-btn button {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  .headline-new-post h1 {
+    font-size: 18px;
+  }
+  .close-btn {
+    top: 9px;
   }
 }

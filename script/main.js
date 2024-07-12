@@ -137,8 +137,8 @@ function generatdetHtmlForAllPosts(post, i) {
         </div>
     
         <div class="post-text padding-left-right">
-          <span>
-            ${post['postText']}
+          <span  >
+           ${post['postText']}
           </span>
         </div>
     
@@ -150,7 +150,7 @@ function generatdetHtmlForAllPosts(post, i) {
            
         
           <div class="add-new-comment padding-left-right">
-            <input onkeyup="valideInputField(${i})"  class="add-new-comment-input" type="text" name="add-new-comment-input" id="comment_input${i}" placeholder="Kommentar hinzufügen" />
+            <input text-wrap: pretty maxlength="100" onkeyup="valideInputField(${i})"  class="add-new-comment-input" type="text" name="add-new-comment-input" id="comment_input${i}" placeholder="Kommentar hinzufügen" />
             <button disabled   id="btn_new_comment${i}" onclick="addNewComment(${i})" class="add-new-comment-button">Posten</button>
           </div>
         </div> 
