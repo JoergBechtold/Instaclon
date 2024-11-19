@@ -265,11 +265,11 @@ function newPost() {
   showPostContent();
 }
 
-/* Push New Post ti JASON Array */
+/* Push New Post to JASON Array */
 function pushNewPost() {
   let newPostInputValue = document.getElementById('new_post_input');
 
-  posts.push({
+  let newPostJasonArray = {
     authorImg: myProfilePicture,
     author: myProfileName,
     postImg: '',
@@ -279,7 +279,21 @@ function pushNewPost() {
     commentTime: [],
     isLiked: false,
     likes: 0,
-  });
+  };
+
+  posts.unshift(newPostJasonArray);
+
+  // posts.push({
+  //   authorImg: myProfilePicture,
+  //   author: myProfileName,
+  //   postImg: '',
+  //   postText: newPostInputValue.value,
+  //   commentProfile: [],
+  //   comments: [],
+  //   commentTime: [],
+  //   isLiked: false,
+  //   likes: 0,
+  // });
   newPostInputValue.value = '';
   valideInputNewPost();
   removeNewPostContainer(); //function in header.script
